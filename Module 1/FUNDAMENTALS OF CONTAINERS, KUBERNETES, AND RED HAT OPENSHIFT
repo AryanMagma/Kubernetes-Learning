@@ -1,3 +1,61 @@
-Containerized Applications
-Software applications are typically deployed as a single set of libraries and configuration files to a runtime environment. They are traditionally deployed to an operating system with a set of services running, such as a database server or an HTTP server, but they can also be deployed to any environment that can provide the same services, such as a virtual machine or a physical host.
+# Software Applications and Containers
+
+## Traditional Software Deployment
+- **Deployment Environment**: Applications are deployed with libraries and configuration files to an operating system (OS) providing essential services like databases or HTTP servers.
+- **Challenges**:
+  - **Dependency Issues**: OS updates might include library updates that can break applications due to incompatibility.
+  - **Shared Libraries Risk**: Multiple applications sharing libraries on the same host may face conflicts if updates affect compatibility.
+  - **Complex Maintenance**:
+    - OS updates require extensive regression testing to ensure application stability.
+    - Updates often require application downtime, increasing the need for high-availability environments.
+    - Deployment processes become cumbersome due to complexity.
+
+---
+
+## Containers and Their Benefits
+- **Definition**: Containers are isolated partitions within a single OS that offer security, storage, and network isolation, similar to virtual machines but with fewer hardware requirements.
+- **Advantages**:
+  
+  ### Low Hardware Footprint
+  - Uses OS-level features like namespaces and cgroups for resource isolation.
+  - Minimal CPU and memory overhead compared to virtual machines.
+
+  ### Environment Isolation
+  - Containers are self-contained with their libraries, ensuring changes to the host OS or other applications do not affect them.
+  - Updates to one container do not disrupt others.
+
+  ### Quick Deployment
+  - Containers can be launched or updated quickly without requiring a full OS installation or restart.
+
+  ### Multiple Environment Deployment
+  - Containers mitigate environment differences by using the same container image across environments, reducing incompatibilities.
+
+  ### Reusability
+  - Containers can be reused for multiple applications without setting up a full OS.
+  - Example: A database container can be created, destroyed, and reused efficiently for different environments.
+
+---
+
+## Single vs. Multi-Container Deployments
+- **Single Container**:
+  - Applications and their dependent services (databases, messaging, etc.) are often bundled in one container.
+  - Challenges arise due to the need for agility and specific application requirements.
+
+- **Multi-Container**:
+  - Suitable for microservices architecture.
+  - Each service runs in a lightweight, reliable container, simplifying deployment across development and production environments.
+
+---
+
+## Considerations
+- Some applications may not be suited for containers, especially those needing low-level hardware access (e.g., memory, file systems, devices).
+- Containers enable microservices development by providing isolated, lightweight environments for individual services.
+
+---
+
+## Popular Container Providers
+- Docker (major provider)
+- Rocket
+- Drawbridge
+- LXC
 
